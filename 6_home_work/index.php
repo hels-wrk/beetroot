@@ -1,4 +1,9 @@
-<!doctype html>
+<?php
+$name = 'Oleksandr';
+$password = '123';
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,10 +14,14 @@
 </head>
 <body>
 <form action="">
-    <lable>login</lable>
-    <input type="text" value="login">
-    <lable>password</lable>
-    <input type="password" value="password">
+    <div class="input">
+        <lable>Login:</lable>
+        <input type="text" value="<?php echo $name;?>">
+    </div>
+    <div class="input">
+        <lable>Password:</lable>
+        <input type="text" value="<?php echo $password;?>">
+    </div>
 </form>
 </body>
 </html>
