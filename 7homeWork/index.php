@@ -31,10 +31,11 @@ $language = ['en', 'ua'];
     <div>
         <labele>Language</labele>
         <select name="language">
-            <option><?php echo $language[0]?></option>
-            <option><?php echo $language[1]?></option>
+            <option value="language"><?php echo $language[0]?></option>
+            <option value="language"><?php echo $language[1]?></option>
         </select>
     </div>
+    <button type="submit">Change language</button>
 </form>
 </body>
 </html>
