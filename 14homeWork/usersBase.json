@@ -1,0 +1,30 @@
+[
+  {
+    "Name": "Sasha",
+    "Login": "Sasha1",
+    "Password": "12345678",
+    "Email": "sasha$gmail.com",
+    "Language": "ru"
+  },
+  {
+    "Name": "Dima",
+    "Login": "Dima1",
+    "Password": "987654321",
+    "Email": "dima$gmail.com",
+    "Language": "en"
+  },
+  {
+    "Name": "Olga",
+    "Login": "Olga1",
+    "Password": "qwerty",
+    "Email": "olga$gmail.com",
+    "Language": "de"
+  },
+  {
+    "Name": "Kate",
+    "Login": "Kate1",
+    "Password": "jjjjjjj123",
+    "Email": "kata$gmail.com",
+    "Language": "fr"
+  }
+]
