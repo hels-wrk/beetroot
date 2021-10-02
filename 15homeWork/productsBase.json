@@ -1,0 +1,17 @@
+[
+  {
+    "Name": "Cola",
+    "Price": "1.2$",
+    "Number": "5 штук"
+  },
+  {
+    "Name": "Sprite",
+    "Price": "1.3$",
+    "Number": "10 штук"
+  },
+  {
+    "Name": "Fanta",
+    "Price": "1.4$",
+    "Number": "13 штук"
+  }
+]
