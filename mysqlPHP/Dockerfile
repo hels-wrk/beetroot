@@ -23,7 +23,7 @@ RUN apt-get update && apt-get install -y \
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
-
+# PDO mysql
 RUN docker-php-ext-install pdo pdo_mysql
 
 # Install extensions
