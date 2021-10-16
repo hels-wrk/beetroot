@@ -1,20 +1,26 @@
 <?php
 
-$num = 5;
-
-function pir($numRows)
+function generate(int $numRows): array
 {
-    $arr = [];
-    for ($i = 0; $i < $numRows; $i++) {
-        $arr[$i]=[];
-        $arr[$i][0]=$arr[$i][$i]=1;
-        for ($j = 1; $j < $i; $j++) {
-            $arr[$i][$j] = $arr[$i-1][$j-1] + $arr[$i-1][$j];
-        }
-        ksort($arr[$i]);
+    $externalArray = [[1]];
+    for ($i = 1; $i < $numRows; $i++) {
+        $externalArray[] = internalArray(end($externalArray));
     }
-    return $arr;
-
+    return $externalArray;
 }
 
-var_export(pir($num));
+function internalArray(array $internalArray): array
+{
+    foreach ($internalArray as $key => $item) {
+        if ($key == 0) {
+            $newInternalArray[] = 1;
+        } else {
+            array_push($newInternalArray, $item + $internalArray[$key - 1]);
+        }
+    }
+    $newInternalArray[] = 1;
+    return $newInternalArray;
+}
+
+$num = 5;
+var_export(generate($num));
