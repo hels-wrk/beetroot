@@ -1,3 +1,4 @@
-/.idea/
+.idea
 mysqlPHP/dbdata
 docker/db_data
+market/dbdata

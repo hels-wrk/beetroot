@@ -15,7 +15,7 @@ class User
         $this->pass = $pass;
     }
 
-    public function login()
+    public function login(): void
     {
         require_once '../connection/connectionSetting.php';
         $smtp = $pdo->prepare("SELECT * FROM users WHERE username=?");
@@ -27,10 +27,11 @@ class User
             echo "Приятных покупок, $this->login!".PHP_EOL;
             require_once '../market/market.php';
         }else{
-            echo "Ошибка входа. Логин или пароль неверен.";
+            echo 'Неверный логин или пароль';
         }
     }
-    public function registration()
+
+    public function registration(): void
     {
         require_once '../connection/connectionSetting.php';
         $smtp = $pdo->prepare("SELECT * FROM users WHERE username = ?");
@@ -41,9 +42,9 @@ class User
         if(!$loginFromDB){
             $smtp = $pdo->prepare("INSERT INTO users(username, password) VALUES(?, ?)");
             $smtp->execute([$this->login, $hashPassword]);
-            echo "Регистрация успешно завершена.";
+            echo 'Успешно зарегестрировались';
         }else{
-            echo "Невозможно создать пользователя, такой логин уже существует.";
+            echo 'Такой логин уже есть';
         }
     }
 }

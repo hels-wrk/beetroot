@@ -1,21 +1,48 @@
 <?php
 
-require 'config.php';
 session_start();
 $login = $_SESSION['currentUser'];
-$arr = $_POST['item'];
-var_export($arr);
+$boughtGood = $_POST['item'];
+session_destroy();
 
-if(empty($arr))
+class Basket
 {
-    echo("Вы не выбрали ни одного здания.");
-}
-else
-{
-    for($i=0; $i < count($arr); $i++)
+    private $login;
+    private $boughtGood;
+
+    public function __construct(string $login, array $boughtGood)
     {
-        $smtp = $pdo->prepare("INSERT INTO basket(good_id, user_id) VALUES(?, ?)");
-        $smtp->execute([$arr[$i],  $login]);
+        $this->login = $login;
+        $this->boughtGood = $boughtGood;
+    }
+
+    public function putInBasket(): void
+    {
+        require '../connection/connectionSetting.php';
+
+        for ($i = 0; $i < count($this->boughtGood); $i++) {
+            $smtp = $pdo->prepare("INSERT INTO basket(good, user_name) VALUES(?, ?)");
+            $smtp->execute([$this->boughtGood[$i], $this->login]);
+        }
+    }
+
+    public function showBasket(): array
+    {
+        require '../connection/connectionSetting.php';
+
+        $result =[];
+        $smtp = $pdo->prepare("SELECT good, user_name FROM basket WHERE user_name=?");
+        $smtp->execute([$this->login]);
+        $result = $smtp->fetchAll();
+        return $result;
     }
 }
-session_destroy();
+
+if (empty($boughtGood)) {
+    echo("Пожуалуйста, ну хоть 1 товар купите.");
+} else {
+    $order = new Basket($login, $boughtGood);
+    $order->putInBasket();
+    var_export($order->showBasket());
+}
+
