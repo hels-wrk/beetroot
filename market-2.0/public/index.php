@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-<form method="post" action="connection/action.php">
+<form method="post" action="app/action.php">
     <label for="login">Логин</label>
     <p><input type="text" name="login" id="login"></p>
     <label for="password">Пароль</label>

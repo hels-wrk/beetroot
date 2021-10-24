@@ -1,8 +1,6 @@
 <?php
 
-$login = $_POST['login'];
-$pass = $_POST['password'];
-
+namespace Market\App;
 
 class User
 {
@@ -17,15 +15,17 @@ class User
 
     public function login(): void
     {
-        require_once '../connection/connectionSetting.php';
+        require_once 'connection.php';
+
         $smtp = $pdo->prepare("SELECT * FROM users WHERE username=?");
         $smtp->execute([$this->login]);
         $result = $smtp->fetch();
+
         if(password_verify($this->pass, $result['password'])){
             session_start();
-            $_SESSION['currentUser'] = $this->login;
+            $_SESSION['currentUserId'] = $result['id'];
             echo "Приятных покупок, $this->login!".PHP_EOL;
-            require_once '../market/market.php';
+            require_once 'market.php';
         }else{
             echo 'Неверный логин или пароль';
         }
@@ -33,7 +33,8 @@ class User
 
     public function registration(): void
     {
-        require_once '../connection/connectionSetting.php';
+        require_once 'connection.php';
+
         $smtp = $pdo->prepare("SELECT * FROM users WHERE username = ?");
         $smtp->execute([$this->login]);
         $loginFromDB = $smtp->fetch();

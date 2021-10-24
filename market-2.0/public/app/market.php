@@ -1,5 +1,6 @@
 <?php
-require_once '../connection/connectionSetting.php';
+require_once 'connection.php';
+
 $smtp = $pdo->query("SELECT id, title FROM goods");
 $data = $smtp->fetchAll();
 
@@ -18,11 +19,11 @@ $data = $smtp->fetchAll();
     <title>Document</title>
 </head>
 <body>
-<form action="../basket/basket.php" method="post">
+<form action="basketObject.php" method="post">
     <?php foreach ($data as $value){$good = $value['title'];?>
     <div class="decoration">
         <lable for="<?php echo $good;?>"><?php echo $good;?></lable>
-        <input type="checkbox" name="item[]" value="<?php echo $good;?>">
+        <input type="checkbox" name="item[]" value="<?php echo $value['id'];?>">
     </div>
     <?php
     }?>
