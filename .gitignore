@@ -1,4 +1,5 @@
 .idea
 mysqlPHP/dbdata
 docker/db_data
-market-2.0/dbdata
+shop/shop_db
+shop/composer.lock

@@ -4,18 +4,18 @@ services:
   #PHP Service
   app:
     build: .
-    container_name: app
+    container_name: shop
     restart: unless-stopped
     tty: true
     environment:
-      SERVICE_NAME: app
+      SERVICE_NAME: shop
       SERVICE_TAGS: dev
     working_dir: /var/www
     volumes:
       - ./:/var/www
-      - ./configurations/conf/nginx/conf.d/:/etc/nginx/conf.d/
+      - ./configurations/conf/nginx/conf.d:/etc/nginx/conf.d
     networks:
-      - app-network
+      - shop-network
 
   #Nginx Service
   webserver:
@@ -28,37 +28,37 @@ services:
       - "443:443"
     volumes:
       - ./:/var/www
-      - ./configurations/nginx/conf.d/:/etc/nginx/conf.d/
+      - ./configurations/nginx/conf.d:/etc/nginx/conf.d
     networks:
-      - app-network
+      - shop-network
 
   #MySQL Service
   db:
     image: mysql:5.7
-    container_name: db
+    container_name: shop_db
     restart: always
     tty: true
     ports:
-      - "3307:3306"
+      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: beetroot
       MYSQL_DATABASE: beetroot
       MYSQL_USER: beetroot
       MYSQL_PASSWORD: beetroot
     volumes:
-      - ./dbdata:/var/lib/mysql/
+      - ./shop_db:/var/lib/mysql
       - ./configurations/mysql/my.cnf:/etc/mysql/my.cnf
     networks:
-      - app-network
+      - shop-network
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     ports:
       - "8008:80"
     environment:
-      PMA_HOST: db
+      PMA_HOST: shop_db
       PMA_PORT: 3306
     networks:
-      - app-network
+      - shop-network
 
 #Volumes
 volumes:
@@ -66,5 +66,5 @@ volumes:
     driver: "local"
 #Docker Networks
 networks:
-  app-network:
+  shop-network:
     driver: bridge
