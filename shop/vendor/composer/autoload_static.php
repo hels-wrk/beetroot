@@ -29,12 +29,21 @@ class ComposerStaticInit14a0b2671fa340b559cf87593a50d295
         ),
         'Market\\App\\' => 
         array (
+<<<<<<< HEAD
             0 => __DIR__ . '/../..' . '/app',
+=======
+            0 => __DIR__ . '/../..' . '/public/app',
+>>>>>>> 0a7b0c70114d7e65c6a71015b0b8989ca5c27908
         ),
     );
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+<<<<<<< HEAD
+=======
+        'Market\\App\\Basket' => __DIR__ . '/../..' . '/public/app/Basket.php',
+        'Market\\App\\User' => __DIR__ . '/../..' . '/public/app/User.php',
+>>>>>>> 0a7b0c70114d7e65c6a71015b0b8989ca5c27908
         'Monolog\\DateTimeImmutable' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/DateTimeImmutable.php',
         'Monolog\\ErrorHandler' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/ErrorHandler.php',
         'Monolog\\Formatter\\ChromePHPFormatter' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Formatter/ChromePHPFormatter.php',
