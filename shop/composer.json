@@ -1,9 +1,7 @@
 {
-
     "autoload": {
         "psr-4": {
-            "Market\\App\\": "app/"
-
+            "Market\\App\\": "public/app/"
         }
     },
     "require": {

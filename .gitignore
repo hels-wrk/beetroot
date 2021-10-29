@@ -1,5 +1,6 @@
-.idea
-mysqlPHP/dbdata
-docker/db_data
-shop/shop_db
-shop/composer.lock
+.idea/
+mysqlPHP/dbdata/
+docker/db_data/
+laravel/shop_db/
+shop/shop_db/
+shop/composer.lock/

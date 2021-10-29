@@ -1,0 +1,11 @@
+{
+    "name": "laravel/app",
+    "autoload": {
+        "psr-4": {
+            "Laravel\\App\\": "public/app/"
+        }
+    },
+    "require": {
+        "laravel/laravel": "^v8.4.0"
+    }
+}
